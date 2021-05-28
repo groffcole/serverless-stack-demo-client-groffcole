@@ -8,6 +8,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Routes from "./Routes";
+import { onError } from "./libs/errorLib";
 import { useHistory } from "react-router-dom";
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
       userHasAuthenticated(true);
     } catch (e) {
       if (e !== "No current user") {
-        alert(e);
+        onError(e);
       }
     }
 
