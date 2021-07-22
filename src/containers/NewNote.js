@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import LoaderButton from "../components/LoaderButton";
 import config from "../config";
 import { onError } from "../libs/errorLib";
+import { s3Upload } from "../libs/awsLib";
 import { useHistory } from "react-router-dom";
 
 export default function NewNote() {
@@ -36,7 +37,9 @@ export default function NewNote() {
     setIsLoading(true);
 
     try {
-      await createNote({ content });
+      const attachment = file.current ? await s3Upload(file.current) : null;
+
+      await createNote({ content, attachment });
       history.push("/");
     } catch (e) {
       onError(e);
