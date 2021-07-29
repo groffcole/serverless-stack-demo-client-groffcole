@@ -4,6 +4,7 @@ import Home from "./containers/Home";
 import Login from "./containers/Login";
 import NewNote from "./containers/NewNote";
 import NotFound from "./containers/NotFound";
+import Notes from "./containers/Notes";
 import React from "react";
 import Signup from "./containers/Signup";
 
@@ -21,6 +22,9 @@ export default function Routes() {
       </Route>
       <Route exact path="/notes/new">
         <NewNote />
+      </Route>
+      <Route exact path="/notes/:id">
+        <Notes />
       </Route>
       <Route>
         <NotFound />
